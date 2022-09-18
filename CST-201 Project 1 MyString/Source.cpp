@@ -9,20 +9,16 @@ using namespace std;
 class MyString {
 private:
 	char words[5];
+	char add[5];
 	int curr_length;
 	int capacity;
 
-	void ensureCapacity(MyString& user) {
-		/*char add[5];
-		for (int i = 0; i < 6; i++) {
-			add[i] = user[i];
-		}*/
-	}
+
 public:
 	//Default Constructor
 	MyString() {
 		curr_length = 0;
-		words[5] = NULL;
+		words[0] = NULL;
 	}
 
 	MyString(string user) {
@@ -52,10 +48,10 @@ public:
 		return s;
 	}
 
+	/*
 	MyString operator+(MyString& s) {
-		//char add[5];
+		
 		MyString addWord("world");
-		//ensureCapacity(addWord);
 
 		char temp[10]{};
 
@@ -65,26 +61,98 @@ public:
 		
 		delete[] words;
 		curr_length = 10;
-		words[curr_length];
+		
+		words[10];
 
 		for (int i = 0; i < s.length(); i++) {
-			words[i] = temp[i];
+			temp[i] = words[i];
 		}
-		for (int i = 6; i < addWord.length() + 6; i++) {
-			words[i] = addWord[i];
+
+		for (int i = 0; i < s.length(); i++) {
+			add[i] = temp[i];
+		}
+
+		for (int i = 0; i < addWord.length(); i++) {
+			words[i] = add[i];
 		}
 		return s;
+	}
+	
+	friend bool operator==(MyString& first, MyString& second) {
+		//compares the string to input
+		if (first == second) {
+			cout << "Yes";
+			return true;
+		}
+		else {
+			cout << "Not the same";
+			return false;
+		}
+	}
+	*/
+	int operator[] (int index) { //.getInt()
+		if (index >= curr_length) {
+			cout << "Array index out of bound, exiting";
+		}
+		else {
+			cout << words[index] << endl;
+			return words[index];
+		}
+	}
+
+	void toUpper() {
+		char out;
+		for (int i = 0; i < curr_length; i++) {
+			if (words[i] >= 97) {
+				words[i] = words[i] - 32;
+			}
+			cout << words[i];
+		}
+		cout << endl;
+	}
+
+	void toLower() {
+		char out;
+		for (int i = 0; i < curr_length; i++) {
+			if (words[i] <= 90) {
+				words[i] = words[i] + 32;
+			}
+			cout << words[i];
+		}
+		cout << endl;
+	}
+
+	void substring(int in) {
+		int inCount = in;
+		for (inCount; inCount < sizeof(words); inCount++) {
+			cout << words[inCount];
+		}
+		cout << endl;
+	}
+
+	void substring(int in, int stop) {
+		int inCount = in;
+		for (inCount; inCount < stop; inCount++) {
+			cout << words[inCount];
+		}
+		cout << endl;
 	}
 };
 
 int main() {
-	MyString myWord("hello");
+	MyString myWord("Hello");
 	MyString myNewWord(myWord);
 	cout << endl;
 	myWord << myNewWord;
 	MyString addWord("world");
-	myNewWord +myNewWord;
 
 	cout << myNewWord.length();
-	
+	//myNewWord + addWord;
+	//myNewWord == myWord;
+	myNewWord[4];
+	myNewWord.toUpper();
+	myNewWord.toLower();
+	myNewWord.substring(2);
+	myNewWord.substring(1, 3);
+
 }
