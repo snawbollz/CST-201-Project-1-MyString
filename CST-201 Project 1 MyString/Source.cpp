@@ -187,7 +187,6 @@ public:
 int main() {
 	MyString myWord("Hello");
 	MyString myNewWord(myWord);
-	cout << endl;
 	myWord << myNewWord;
 	MyString addWord("world");
 
@@ -200,7 +199,7 @@ int main() {
 	myNewWord.substring(2);
 	myNewWord.substring(1, 3);
 
-	cout<< myNewWord.indexOf(myNewWord, myNewWord.substring(2));
+	cout<< myNewWord.indexOf(myNewWord, myNewWord.substring(1));
 	cout << endl;
-	cout << myNewWord.lastIndexOf(myNewWord, myNewWord.substring(4));
+	cout << myNewWord.lastIndexOf(myNewWord, myNewWord.substring(3));
 }
