@@ -122,20 +122,65 @@ public:
 		cout << endl;
 	}
 
-	void substring(int in) {
+	string substring(int in) {
+		string result;
 		int inCount = in;
 		for (inCount; inCount < sizeof(words); inCount++) {
+			result += words[inCount];
 			cout << words[inCount];
 		}
 		cout << endl;
+		return result;
 	}
 
-	void substring(int in, int stop) {
+	string substring(int in, int stop) {
+		string result;
 		int inCount = in;
 		for (inCount; inCount < stop; inCount++) {
 			cout << words[inCount];
 		}
 		cout << endl;
+		return result;
+	}
+
+	int indexOf(MyString s, string r) {
+		for (int i = 0; i <= curr_length - r.length(); i++) {
+			int j;
+
+			for (j = 0; j < r.length(); j++) {
+				if (words[i + j] != r[j]) {
+					break; //breaks when no pattern is found
+				}
+
+				if (j == r.length()) {
+					return i; //returns the number of iterations if found 
+
+				}else {
+					return -1;
+				}
+			}
+		}
+
+	}
+
+	int lastIndexOf(MyString s, string r) {
+		for (int i = 0; i <= curr_length - r.length(); i++) {
+			int j;
+
+			for (j = 0; j < r.length(); j++) {
+				if (words[i + j] != r[j]) {
+					break; //breaks when no pattern is found
+				}
+
+				if (j == r.length()) {
+					return i + r.length(); //returns the number of iterations if found 
+
+				}
+				else {
+					return -1;
+				}
+			}
+		}
 	}
 };
 
@@ -155,4 +200,7 @@ int main() {
 	myNewWord.substring(2);
 	myNewWord.substring(1, 3);
 
+	cout<< myNewWord.indexOf(myNewWord, myNewWord.substring(2));
+	cout << endl;
+	cout << myNewWord.lastIndexOf(myNewWord, myNewWord.substring(4));
 }
