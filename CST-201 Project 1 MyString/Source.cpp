@@ -8,17 +8,30 @@ using namespace std;
 
 class MyString {
 private:
-	char* words[5];
-	char* temp[10];
+	char words[5];
+	char temp[10];
 
 	int size;
 	int curr_length = 0;
 	int capacity;
 
 	void ensureCapacity() {
-		if (words.length() == curr_length) {
-			char temp[curr_length * 2];
+		capacity = curr_length;
+		cout << "Current Capacity " << capacity << endl;
+
+		char* temp = new char[capacity * 3];
+
+		for (int i = 0; i < curr_length; i++)
+		{
+			temp[i] = words[i];
 		}
+
+		delete[] words;
+
+		words == temp;
+		
+		capacity = capacity * 3;
+		cout << "Current Capacity " << capacity << endl;
 	}
 
 public:
@@ -58,11 +71,39 @@ public:
 	}
 
 	
-	MyString concat(MyString& s) {
+	MyString concat(MyString& s, MyString& n) {
+
+		MyString res(s);
+
+		if (res.capacity >= res.curr_length) {
+			res.ensureCapacity();
+			for (int i = 0; i < (res.curr_length + n.curr_length); i++) {
+				res.words[curr_length + i] = n.words[i];
+			}
+
+			res.curr_length = s.curr_length + n.curr_length;
+
+			for (int i = 0; i < res.curr_length; i++) {
+				cout << res[i];
+			}
+
+		}else {
+
+			for (int i = 0; i < (res.curr_length + n.curr_length); i++) {
+				res.words[curr_length + 1] = n.words[i];
+			}
+
+			res.curr_length = s.curr_length + n.curr_length;
+
+			for (int i = 0; i < res.curr_length; i++)
+			{
+				cout << s.words[i];
+			}
+			cout << endl;
+		}
 		
 		
-		
-		return con;
+		return res;
 	}
 	
 	friend bool operator==(MyString& first, MyString& second) {
@@ -178,7 +219,7 @@ int main() {
 	MyString addWord("world");
 
 	cout << myNewWord.length();
-	//myNewWord.concat(myNewWord, addWord);
+	myNewWord.concat(myNewWord, addWord);
 	//myNewWord == myWord;
 	myNewWord[4];
 	myNewWord.toUpper();
