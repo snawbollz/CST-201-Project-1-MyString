@@ -33,7 +33,7 @@ private:
 		capacity = capacity * 3;
 		cout << "Current Capacity " << capacity << endl;
 	}
-
+	//O(n)
 public:
 
 
@@ -42,25 +42,25 @@ public:
 		curr_length = 0;
 		words[0] = NULL;
 	}
-
+	//O(1)
 	MyString(string user) {
 		for (int i = 0; i < user.length(); i++) {
 			words[i] = user[i];
 		}
 		curr_length = user.length();
 	}
-
+	//O(n)
 	MyString(MyString& copy) {
 		for (int i = 0; i < 5; i++) {
 			words[i] = copy.words[i];
 		}
 		curr_length = copy.length();
 	}
-
+	//O(n)
 	int length() {
 		return curr_length;
 	}
-
+	//O(1)
 	MyString operator<<(MyString &s) {
 		//print out string
 		for (int i = 0; i < sizeof(words); i++) {
@@ -69,7 +69,7 @@ public:
 		cout << endl;
 		return s;
 	}
-
+	//O(n)
 	
 	MyString concat(MyString& s, MyString& n) {
 
@@ -117,7 +117,7 @@ public:
 			return false;
 		}
 	}
-	
+	//O(1)	
 	int operator[] (int index) { //.getInt()
 		if (index >= curr_length) {
 			cout << "Array index out of bound, exiting";
@@ -127,7 +127,7 @@ public:
 			return words[index];
 		}
 	}
-
+	//O(1)
 	void toUpper() {
 		char out;
 		for (int i = 0; i < curr_length; i++) {
@@ -138,7 +138,7 @@ public:
 		}
 		cout << endl;
 	}
-
+	//O(n)
 	void toLower() {
 		char out;
 		for (int i = 0; i < curr_length; i++) {
@@ -149,7 +149,7 @@ public:
 		}
 		cout << endl;
 	}
-
+	//O(n)
 	string substring(int in) {
 		string result;
 		int inCount = in;
@@ -160,7 +160,7 @@ public:
 		cout << endl;
 		return result;
 	}
-
+	//O(n)
 	string substring(int in, int stop) {
 		string result;
 		int inCount = in;
@@ -170,7 +170,7 @@ public:
 		cout << endl;
 		return result;
 	}
-
+	//O(1)
 	int indexOf(MyString s, string r) {
 		for (int i = 0; i <= curr_length - r.length(); i++) {
 			int j;
@@ -190,7 +190,7 @@ public:
 		}
 
 	}
-
+	//O(n^2)
 	int lastIndexOf(MyString s, string r) {
 		for (int i = 0; i <= curr_length - r.length(); i++) {
 			int j;
@@ -211,7 +211,7 @@ public:
 		}
 	}
 };
-
+//O(n^2)
 int main() {
 	MyString myWord("Hello");
 	MyString myNewWord(myWord);
@@ -219,7 +219,7 @@ int main() {
 	MyString addWord("world");
 
 	cout << myNewWord.length();
-	myNewWord.concat(myNewWord, addWord);
+	myNewWord.concat(myNewWord, myWord);
 	//myNewWord == myWord;
 	myNewWord[4];
 	myNewWord.toUpper();
