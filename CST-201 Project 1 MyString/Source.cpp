@@ -8,13 +8,22 @@ using namespace std;
 
 class MyString {
 private:
-	char words[5];
-	char add[5];
-	int curr_length;
+	char* words[5];
+	char* temp[10];
+
+	int size;
+	int curr_length = 0;
 	int capacity;
 
+	void ensureCapacity() {
+		if (words.length() == curr_length) {
+			char temp[curr_length * 2];
+		}
+	}
 
 public:
+
+
 	//Default Constructor
 	MyString() {
 		curr_length = 0;
@@ -48,34 +57,12 @@ public:
 		return s;
 	}
 
-	/*
-	MyString operator+(MyString& s) {
+	
+	MyString concat(MyString& s) {
 		
-		MyString addWord("world");
-
-		char temp[10]{};
-
-		for (int i = 0; i < s.length(); i++) {
-			temp[i] = words[i];
-		}
 		
-		delete[] words;
-		curr_length = 10;
 		
-		words[10];
-
-		for (int i = 0; i < s.length(); i++) {
-			temp[i] = words[i];
-		}
-
-		for (int i = 0; i < s.length(); i++) {
-			add[i] = temp[i];
-		}
-
-		for (int i = 0; i < addWord.length(); i++) {
-			words[i] = add[i];
-		}
-		return s;
+		return con;
 	}
 	
 	friend bool operator==(MyString& first, MyString& second) {
@@ -89,7 +76,7 @@ public:
 			return false;
 		}
 	}
-	*/
+	
 	int operator[] (int index) { //.getInt()
 		if (index >= curr_length) {
 			cout << "Array index out of bound, exiting";
@@ -191,7 +178,7 @@ int main() {
 	MyString addWord("world");
 
 	cout << myNewWord.length();
-	//myNewWord + addWord;
+	//myNewWord.concat(myNewWord, addWord);
 	//myNewWord == myWord;
 	myNewWord[4];
 	myNewWord.toUpper();
